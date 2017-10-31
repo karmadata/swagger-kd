@@ -292,7 +292,7 @@
       }
     },
     "RequestItemListSearchApi" : {
-      "type" : "array",
+      "type" : "object",
       "description" : "An array of RequestItems, each representing a separate request for data.  As of v3.1.0 only one RequestItem is accepted.  Stay tuned for future releases.  The RequestItem represents a request for data, as filtered by the FilterGroups.",
       "items" : {
         "properties" : {
@@ -324,7 +324,10 @@
       "description" : "A wrapping object for the list of RequestItems.",
       "properties" : {
         "RequestItemList" : {
-          "$ref" : "#/definitions/RequestItemListGroupApi"
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RequestItemListGroupApi"
+          }
         }
       }
     },
@@ -442,8 +445,10 @@
           },
           "Values" : {
             "type" : "array",
-            "example" : [ 1995 ],
-            "description" : "An array of the specified DataType.  So if Filter is a number filter, then an array of numbers. If Between Operator, only the first two items in the values array are considered.  If Gt|Gte|Lt|Lte|Like|NotLike Operator only the first item in the values array is considered. If Eq|NotEq all items in the values array are considered. If Like|NotLike operator, the term needs to have wildcards noted by % placeholder.  If DataType is boolean, only the first item in the values array is considered."
+            "items" : {
+              "example" : [ 1995 ],
+              "description" : "An array of the specified DataType.  So if Filter is a number filter, then an array of numbers. If Between Operator, only the first two items in the values array are considered.  If Gt|Gte|Lt|Lte|Like|NotLike Operator only the first item in the values array is considered. If Eq|NotEq all items in the values array are considered. If Like|NotLike operator, the term needs to have wildcards noted by % placeholder.  If DataType is boolean, only the first item in the values array is considered."
+            }
           }
         }
       }
@@ -458,7 +463,9 @@
         },
         "Result" : {
           "type" : "array",
-          "description" : "An array of the EntityType you requested or null if zero results found."
+          "items" : {
+            "description" : "An array of the EntityType you requested or null if zero results found."
+          }
         }
       }
     },
@@ -472,7 +479,9 @@
         },
         "Result" : {
           "type" : "array",
-          "description" : "An array of array of property values you requested or null if zero results found.  Each item in the Result array is itself an array of property values (in the same order of the properties requested in the SelectItemList)."
+          "items" : {
+            "description" : "An array of array of property values you requested or null if zero results found.  Each item in the Result array is itself an array of property values (in the same order of the properties requested in the SelectItemList)."
+          }
         }
       }
     },
