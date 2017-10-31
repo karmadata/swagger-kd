@@ -245,6 +245,44 @@
         }
       }
     },
+    "/Select" : {
+      "post" : {
+        "tags" : [ "Select" ],
+        "summary" : "Perform a complex Select operation using a KdRequestItem.",
+        "operationId" : "selectPost",
+        "description" : "A ReSTful abstraction of SQL Select query for any number of properties across any entity types that can be joined (think entity and fact datasets or tables).  Select requests have SelectItems (just like the Group API requests). However the SelectItem operations must be a Select operation (as opposed to aggregation operations like GroupBy, Distinct, Count, Sum, etc.) FilterItems and FilterGroups work exactly the same as for Group, with the first FilterGroup[0] dedicated to filtering the main request and limited to only those EntityTypes represented in the SelectItem array.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "apiKey",
+          "description" : "Pass an apiKey (use 1CBBDA20E5394CB7A8384CCA8FA0B9B6 for testing) for simple auth production authorization requires registration and use of OAuth and Bearer Tokens.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "SelectRequest",
+          "description" : "An object that contains an array of RequestItems, each representing a request for data.  Currently KD only accepts a single RequestItem for data.",
+          "schema" : {
+            "$ref" : "#/definitions/RequestSelectApi"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Select results in the form of an Array of Arrays (aoa), that correspond to the order of the SelectItems passed in.  The data can return One To Many results if that is how the Entities selected related to each other, so understanding the domain model is important.",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/KdResponseSelectApi"
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized"
+          }
+        }
+      }
+    },
     "/Modify" : {
       "post" : {
         "tags" : [ "Modify" ],
@@ -387,6 +425,80 @@
                 "Format" : {
                   "type" : "string",
                   "description" : "format represents how to group by a Date or Number property can be represented if GroupBy. * a Date property groups by data ranges can have a format of 'yyyy', 'yyyy-mm', 'yyyy-mm-dd', 'mm-dd', etc. * a Number property groups by number ranges and can have format of '<1,1-10,11-20,21-30,>30' * the 1-10 is a between 1 and 10 inclusive (so includes the values 1 and 10)"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "RequestSelecltApi" : {
+      "type" : "object",
+      "description" : "A wrapping object for the list of RequestItems.",
+      "properties" : {
+        "RequestItemList" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RequestItemListSelectApi"
+          }
+        }
+      }
+    },
+    "RequestItemListSelectApi" : {
+      "type" : "array",
+      "description" : "An array of RequestItems, each representing a separate request for data.  As of v3.1.0 only one RequestItem is accepted.  Stay tuned for future releases.  The RequestItem represents a request for data, as filtered by the FilterGroups.",
+      "items" : {
+        "properties" : {
+          "EntityType" : {
+            "description" : "Only used in Search API, defines the EntityType to be searched and returned.",
+            "type" : "string",
+            "example" : "KdPhysician"
+          },
+          "KdEntityAction" : {
+            "type" : "string",
+            "example" : "Select"
+          },
+          "FilterGroups" : {
+            "$ref" : "#/definitions/FilterGroups"
+          },
+          "SelectList" : {
+            "type" : "array",
+            "description" : "A list of related EntityTypes to the Search EntityType.  Returned in the KdResponse as an inline array property RelatedEntities as unfiltered lists, one list for each relateld EntityType requested.",
+            "example" : [ {
+              "EntityType" : "KdPhysician",
+              "PropertyName" : "Name.Given",
+              "DataType" : "String",
+              "GroupFunction" : "Select"
+            }, {
+              "EntityType" : "KdPhysician",
+              "PropertyName" : "NPI",
+              "DataType" : "String",
+              "GroupFunction" : "Select",
+              "Direction" : "desc"
+            } ],
+            "items" : {
+              "properties" : {
+                "EntityType" : {
+                  "type" : "string"
+                },
+                "PropertyName" : {
+                  "type" : "string"
+                },
+                "DataType" : {
+                  "type" : "string",
+                  "description" : "The data type of the Property being aggregated"
+                },
+                "GroupFunction" : {
+                  "type" : "string",
+                  "description" : "Valid function values are Select.  The aggregation Group functions can not be used in Select API"
+                },
+                "Direction" : {
+                  "type" : "string",
+                  "description" : "The only way to sort a Select or Group API request is to put the Direction directly on the SelectItem (currently the Select and Group API implement sorting differently than Search API - this will be changed in future release)."
+                },
+                "Format" : {
+                  "type" : "string",
+                  "description" : "format represents how to format a Date or Number property using a to_char function. Dates can have formats of 'yyyy', 'yyyy-mm', 'yyyy-mm-dd', 'mm-dd', 'IW', etc.  Numbers can have format of '<1,1-10,11-20,21-30,>30' * the 1-10 is a between 1 and 10 inclusive (so includes the values 1 and 10)"
                 }
               }
             }
