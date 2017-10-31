@@ -271,10 +271,7 @@
           "200" : {
             "description" : "Select results in the form of an Array of Arrays (aoa), that correspond to the order of the SelectItems passed in.  The data can return One To Many results if that is how the Entities selected related to each other, so understanding the domain model is important.",
             "schema" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/definitions/KdResponseSelectApi"
-              }
+              "$ref" : "#/definitions/KdResponseSelectApi"
             }
           },
           "401" : {
@@ -597,6 +594,22 @@
         }
       }
     },
+    "ResultSelectApi" : {
+      "type" : "object",
+      "description" : "A wrapping object for the data returned by Select API.",
+      "properties" : {
+        "Count" : {
+          "type" : "number",
+          "description" : "The total number of records found using your request.  Note this is NOT the same as the length of the array of results (as you may find 1.4 million records, but only requested items 1-10 for your application)."
+        },
+        "Result" : {
+          "type" : "array",
+          "items" : {
+            "description" : "An array of array of the items you requested or null if zero results found.  Each item in the Result array is itself an array of property values (in the same order of the properties requested in the SelectItemList)."
+          }
+        }
+      }
+    },
     "KdResponseSearchApi" : {
       "type" : "object",
       "description" : "A wrapping object for the Search API response.  The KdRequest is what was ACTUALLY requested vs what you may have sent in via POST.  An example reason for a difference would be if the server side tags on additional filters to say only return data for a logged in User or for an account, etc...  Typically happens when the Kd API is used server to server (application proxy to Kd API) instead of direct UI client to Kd API.",
@@ -618,6 +631,18 @@
         },
         "KdResult" : {
           "$ref" : "#/definitions/ResultGroupApi"
+        }
+      }
+    },
+    "KdResponseSelectApi" : {
+      "type" : "object",
+      "description" : "A wrapping object for the Select API response.  The KdRequest is what was ACTUALLY requested vs what you may have sent in via POST.  An example reason for a difference would be if the server side tags on additional filters to say only return data for a logged in User or for an account, etc...  Typically happens when the Kd API is proxied behind a server, and used server to server (application proxy to Kd API) instead of direct UI client to Kd API.",
+      "properties" : {
+        "KdRequest" : {
+          "$ref" : "#/definitions/RequestSelectApi"
+        },
+        "KdResult" : {
+          "$ref" : "#/definitions/ResultSelectApi"
         }
       }
     },
