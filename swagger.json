@@ -198,10 +198,7 @@
           "200" : {
             "description" : "search results matching criteria",
             "schema" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/definitions/KdResponseSearchApi"
-              }
+              "$ref" : "#/definitions/KdResponseSearchApi"
             }
           },
           "401" : {
