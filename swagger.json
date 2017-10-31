@@ -432,7 +432,7 @@
         }
       }
     },
-    "RequestSelecltApi" : {
+    "RequestSelectApi" : {
       "type" : "object",
       "description" : "A wrapping object for the list of RequestItems.",
       "properties" : {
