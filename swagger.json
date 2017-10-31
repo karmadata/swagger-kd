@@ -156,10 +156,7 @@
           "200" : {
             "description" : "search results matching criteria",
             "schema" : {
-              "type" : "object",
-              "items" : {
-                "$ref" : "#/definitions/KdResponseSearchApi"
-              }
+              "$ref" : "#/definitions/KdResponseSearchApi"
             }
           },
           "401" : {
