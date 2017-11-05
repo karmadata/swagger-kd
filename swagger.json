@@ -4,7 +4,7 @@
     "url" : "https://api.thorz.com/provider/karmadatakdapi"
   } ],
   "security" : [ {
-    "oAuth2ClientCredentials" : [ "rolesPermissions all_claims" ]
+    "oAuth2ClientCredentials" : [ "rolesPermissions", "all_claims" ]
   } ],
   "info" : {
     "description" : "The karmadata API provides ReST access to public and private clouds of data, with the ability to link related data entities and to do everything from simple searches, complex filters (grouped filter logic), location and text based filters, and analytics by grouping different datasets.  You can also create and query your own datasets and entities using our Modify API, or via bulk upload, in order to unlock hidden datasets and maximize their value\nNOTE these examples are using the oauth2 client credential flow to authorize.  Click the authorize button, accept the default client id and secret, and check all available scopes.",
@@ -241,7 +241,6 @@
         "summary" : "Perform a complex Select operation using a KdRequestItem.",
         "operationId" : "selectPost",
         "description" : "A ReSTful abstraction of SQL Select query for any number of properties across any entity types that can be joined (think entity and fact datasets or tables).  Select requests have SelectItems (just like the Group API requests). However the SelectItem operations must be a Select operation (as opposed to aggregation operations like GroupBy, Distinct, Count, Sum, etc.) FilterItems and FilterGroups work exactly the same as for Group, with the first FilterGroup[0] dedicated to filtering the main request and limited to only those EntityTypes represented in the SelectItem array.",
-        "parameters" : null,
         "responses" : {
           "200" : {
             "description" : "Select results in the form of an Array of Arrays (aoa), that correspond to the order of the SelectItems passed in.  The data can return One To Many results if that is how the Entities selected related to each other, so understanding the domain model is important.",
