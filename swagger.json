@@ -62,14 +62,6 @@
           "schema" : {
             "type" : "string"
           }
-        }, {
-          "in" : "query",
-          "name" : "apiKey",
-          "description" : "Pass an apiKey (use 1CBBDA20E5394CB7A8384CCA8FA0B9B6 for testing) for simple auth. Production authorization requires registration and use of OAuth and Bearer Tokens.",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
         } ],
         "responses" : {
           "200" : {
@@ -95,14 +87,6 @@
           "schema" : {
             "type" : "string"
           }
-        }, {
-          "in" : "query",
-          "name" : "apiKey",
-          "description" : "Pass an apiKey (use 1CBBDA20E5394CB7A8384CCA8FA0B9B6 for testing) for simple auth. Production authorization requires registration and use of OAuth and Bearer Tokens.",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
         } ],
         "responses" : {
           "200" : {
@@ -125,14 +109,6 @@
           "name" : "EntityType",
           "required" : true,
           "description" : "EntityType to search. Use KdPhysician for testing",
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "in" : "query",
-          "name" : "apiKey",
-          "description" : "Pass an apiKey (use 1CBBDA20E5394CB7A8384CCA8FA0B9B6 for testing) for simple auth. Production authorization requires registration and use of OAuth and Bearer Tokens.",
-          "required" : true,
           "schema" : {
             "type" : "string"
           }
@@ -192,14 +168,6 @@
           "schema" : {
             "type" : "string"
           }
-        }, {
-          "in" : "query",
-          "name" : "apiKey",
-          "description" : "Pass an apiKey (use 1CBBDA20E5394CB7A8384CCA8FA0B9B6 for testing) for simple auth. Production authorization requires registration and use of OAuth and Bearer Tokens.",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
         } ],
         "responses" : {
           "200" : {
@@ -237,15 +205,6 @@
         "summary" : "Perform a complex grouping / aggregation operation using a KdRequestItem.",
         "operationId" : "groupPost",
         "description" : "A ReSTful abstraction of SQL group by query for any number of properties across any entity types that can be joined (think entity and fact datasets or tables).  Group requests have SelectItems (just like the Select API requests). However the SelectItem operations must be aggregation operations like GroupBy, Distinct, Count, Sum, etc. FilterItems and FilterGroups work exactly the same as for Select, with the first FilterGroup[0] dedicated to filtering the main request and limited to only those EntityTypes represented in the SelectItem array.",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "apiKey",
-          "description" : "Pass an apiKey (use 1CBBDA20E5394CB7A8384CCA8FA0B9B6 for testing) for simple auth production authorization requires registration and use of OAuth and Bearer Tokens.",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
         "responses" : {
           "200" : {
             "description" : "search results matching criteria",
@@ -282,15 +241,7 @@
         "summary" : "Perform a complex Select operation using a KdRequestItem.",
         "operationId" : "selectPost",
         "description" : "A ReSTful abstraction of SQL Select query for any number of properties across any entity types that can be joined (think entity and fact datasets or tables).  Select requests have SelectItems (just like the Group API requests). However the SelectItem operations must be a Select operation (as opposed to aggregation operations like GroupBy, Distinct, Count, Sum, etc.) FilterItems and FilterGroups work exactly the same as for Group, with the first FilterGroup[0] dedicated to filtering the main request and limited to only those EntityTypes represented in the SelectItem array.",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "apiKey",
-          "description" : "Pass an apiKey (use 1CBBDA20E5394CB7A8384CCA8FA0B9B6 for testing) for simple auth production authorization requires registration and use of OAuth and Bearer Tokens.",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
+        "parameters" : null,
         "responses" : {
           "200" : {
             "description" : "Select results in the form of an Array of Arrays (aoa), that correspond to the order of the SelectItems passed in.  The data can return One To Many results if that is how the Entities selected related to each other, so understanding the domain model is important.",
@@ -324,15 +275,6 @@
         "summary" : "perform a series of data modifying operations. A transaction is wrapped around these operations so they all succeed or fail together.",
         "operationId" : "modify",
         "description" : "Insert or update database using the supplied objects.",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "apiKey",
-          "description" : "Pass an apiKey (use 1CBBDA20E5394CB7A8384CCA8FA0B9B6 for testing) for simple auth production authorization requires registration and use of OAuth and Bearer Tokens.",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
         "responses" : {
           "200" : {
             "description" : "all operations succeeded"
