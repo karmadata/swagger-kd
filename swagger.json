@@ -307,7 +307,8 @@
           "clientCredentials" : {
             "tokenUrl" : "https://auth.thorz.com/auth/1d32bb0a-5e21-4c69-a943-e4138901707d/application/connect/token",
             "scopes" : {
-              "rolesPermissions" : "rolesPermissions all_claims"
+              "rolesPermissions" : "not sure",
+              "all_claims" : "not sure"
             }
           }
         }
