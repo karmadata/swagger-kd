@@ -370,6 +370,11 @@
             }
           }
         }
+      },
+      "bearerSimple" : {
+        "type" : "apiKey",
+        "name" : "Authorization",
+        "in" : "header"
       }
     },
     "schemas" : {
