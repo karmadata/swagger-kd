@@ -1,8 +1,6 @@
 {
   "openapi" : "3.0.0",
   "servers" : [ {
-    "url" : "https://api.thorz.com/provider/karmadatakdapi"
-  }, {
     "url" : "https://stg-kdrequest.karmadata.com"
   } ],
   "security" : [ {
