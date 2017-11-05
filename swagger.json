@@ -4,7 +4,7 @@
     "url" : "https://api.thorz.com/provider/karmadatakdapi"
   } ],
   "security" : [ {
-    "oAuth2ClientCredentials" : [ "rolesPermissions" ]
+    "oAuth2ClientCredentials" : [ "roles", "rolesPermissions" ]
   } ],
   "info" : {
     "description" : "The karmadata API provides ReST access to public and private clouds of data, with the ability to link related data entities and to do everything from simple searches, complex filters (grouped filter logic), location and text based filters, and analytics by grouping different datasets.  You can also create and query your own datasets and entities using our Modify API, or via bulk upload, in order to unlock hidden datasets and maximize their value\nNOTE these examples are using the oauth2 client credential flow to authorize.  Click the authorize button, accept the default client id and secret, and check all available scopes.",
@@ -307,6 +307,7 @@
           "clientCredentials" : {
             "tokenUrl" : "https://auth.thorz.com/auth/1d32bb0a-5e21-4c69-a943-e4138901707d/application/connect/token",
             "scopes" : {
+              "roles" : "roles scope",
               "rolesPermissions" : "rolesPermissions scope"
             }
           }
