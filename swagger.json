@@ -60,7 +60,8 @@
           "required" : true,
           "description" : "EntityType you need property information for. Use KdPhysician for testing",
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "example" : "KdPhysician"
           }
         } ],
         "responses" : {
@@ -320,12 +321,6 @@
           "application/json" : {
             "schema" : {
               "$ref" : "#/components/schemas/RequestItemListSearchApi"
-            },
-            "examples" : {
-              "user" : {
-                "summary" : "User Example",
-                "externalValue" : "http://foo.bar/examples/user-example.json"
-              }
             }
           }
         }
