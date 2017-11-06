@@ -576,7 +576,7 @@
             "Values" : {
               "type" : "array",
               "items" : {
-                "example" : [ 1995 ],
+                "example" : 1995,
                 "description" : "An array of the specified DataType.  So if Filter is a number filter, then an array of numbers. If Between Operator, only the first two items in the values array are considered.  If Gt|Gte|Lt|Lte|Like|NotLike Operator only the first item in the values array is considered. If Eq|NotEq all items in the values array are considered. If Like|NotLike operator, the term needs to have wildcards noted by % placeholder.  If DataType is boolean, only the first item in the values array is considered."
               }
             }
