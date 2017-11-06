@@ -58,11 +58,11 @@
           "in" : "path",
           "name" : "EntityType",
           "required" : true,
-          "description" : "EntityType you need property information for. Use KdPhysician for testing",
+          "description" : "EntityType you need property information for.",
           "schema" : {
-            "type" : "string",
-            "example" : "KdPhysician"
-          }
+            "type" : "string"
+          },
+          "example" : "KdPhysician"
         } ],
         "responses" : {
           "200" : {
@@ -84,10 +84,11 @@
           "in" : "path",
           "name" : "EntityType",
           "required" : true,
-          "description" : "EntityType to search. Use KdPhysician for testing",
+          "description" : "EntityType to search",
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "KdPhysician"
         } ],
         "responses" : {
           "200" : {
@@ -109,10 +110,11 @@
           "in" : "path",
           "name" : "EntityType",
           "required" : true,
-          "description" : "EntityType to search. Use KdPhysician for testing",
+          "description" : "EntityType to search.",
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "KdPhysician"
         }, {
           "in" : "query",
           "name" : "q",
@@ -129,7 +131,8 @@
             "type" : "integer",
             "format" : "int32",
             "minimum" : 1
-          }
+          },
+          "example" : 1
         }, {
           "in" : "query",
           "name" : "rowsPerPage",
@@ -138,7 +141,8 @@
             "type" : "integer",
             "format" : "int32",
             "minimum" : 10
-          }
+          },
+          "example" : 10
         } ],
         "responses" : {
           "200" : {
@@ -165,10 +169,11 @@
           "in" : "path",
           "name" : "EntityType",
           "required" : true,
-          "description" : "EntityType to search. Use KdPhysician for testing",
+          "description" : "EntityType to search.",
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "KdPhysician"
         } ],
         "responses" : {
           "200" : {
