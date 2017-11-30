@@ -1,7 +1,11 @@
 {
   "openapi" : "3.0.0",
   "servers" : [ {
+    "url" : "https://qa-kdrequest.karmadata.com"
+  }, {
     "url" : "https://stg-kdrequest.karmadata.com"
+  }, {
+    "url" : "https://kdrequest.karmadata.com"
   } ],
   "security" : [ {
     "oAuth2ClientCredentials" : [ "rolesPermissions" ]
