@@ -312,10 +312,10 @@
     "securitySchemes" : {
       "oAuth2ClientCredentials" : {
         "type" : "oauth2",
-        "description" : "Use client_id = f9862d8f-740c-4f12-b9c8-d577d408ae4d client_secret p3rc5GXm8uAQDk8x2F3FBQmuJ6KONNRx2BDAazPaLwsB2rsx3D",
+        "description" : "Use client_id = f9862d8f-740c-4f12-b9c8-d577d408ae4d client_secret FIAoM9vUBlqFqe7wkCFpgx2FkwfdKaUlCAjjCHmNCx2FJ3wx3D",
         "flows" : {
           "clientCredentials" : {
-            "tokenUrl" : "https://auth.thorz.com/auth/cc57f1e3-d12c-48a0-b63b-fb666dbdc7d1/application/connect/token",
+            "tokenUrl" : "https://auth.twinstage.com/auth/1d32bb0a-5e21-4c69-a943-e4138901707d/application/connect/token",
             "scopes" : {
               "rolesPermissions" : "rolesPermissions scope"
             }
